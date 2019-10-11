@@ -9,7 +9,13 @@ const Attendance = props => (
       </div>
       <ul className="list">
         {props.members.map(member => (
-          <li key={member.id} className="member">
+          <li
+            key={member.id}
+            className={
+              props.active.includes(member.id) ? "selected member" : "member"
+            }
+            onClick={props.toggleAttendance.bind(this, member.id)}
+          >
             <img className="profile" src="/pic.svg" alt="user image"></img>
             <p className="name">{member.name}</p>
             <p className="address">{member.address}</p>
@@ -64,7 +70,7 @@ const Attendance = props => (
         background-color: #fff;
         box-shadow: 0px 3px 6px #00000029;
         margin-bottom: 10px;
-        padding: 0 0 5px 40px;
+        padding: 5px 0 5px 40px;
         max-height: 40px;
 
         display: grid;
@@ -84,6 +90,13 @@ const Attendance = props => (
       .member .address {
         font-weight: 300;
         font-size: 10px;
+      }
+
+      .selected{
+        background-color: #40b1a2;
+      }
+      .selected p{
+        color: #fff;
       }
 
       .member .profile {
