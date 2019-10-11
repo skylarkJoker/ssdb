@@ -1,44 +1,53 @@
 import React from "react";
 
-const Attendance = () => (
-  <div className="grid-container">
-    <div className="page-header">
-      <p className="page-title">Attendance</p>
-      <p className="page-subtitle">Hightlight the members who are present</p>
+const Study = props => (
+  <div className="container">
+    <div className="grid-container">
+      <div className="page-header">
+        <p className="page-title">Study Record</p>
+        <p className="page-subtitle">Highlight the members who studied</p>
+      </div>
+      <ul className="list">
+        {props.members
+          .filter(member => {
+            return member.status === "present";
+          })
+          .map(member => (
+            <li key={member.id} className="member">
+              <img className="profile" src="/pic.svg" alt="user image"></img>
+              <p className="name">{member.name}</p>
+              <p className="address">{member.address}</p>
+            </li>
+          ))}
+      </ul>
+      <button className="done-button" onClick={props.prevStep}>
+        PREV
+      </button>
+      <button className="done-button">DONE</button>
     </div>
-    <ul className="list">
-      <li className="member">
-        <img className="profile" src="/pic.svg" alt="user image"></img>
-        <p className="name">Andrew Aardvark</p>
-        <p className="address">Vernon's Estate</p>
-      </li>
-      <li className="member">
-        <img className="profile" src="/pic.svg" alt="user image"></img>
-        <p className="name">Brandon Marks</p>
-        <p className="address">Vernon's Estate</p>
-      </li>
-    </ul>
-    <button className="done-button">DONE</button>
     <style jsx>{`
       @import url('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap');
+      .container{
+        padding: 40px 40px 0 40px;
+      }
+
       .grid-container {
         font-family: 'Roboto', sans-serif;
         color: #707070;
 
         display: grid;
-        grid-row-gap: 10px;
+        grid-gap: 10px 50px;
         grid-template-rows: 1fr 3fr 1fr;
-        grid-template-columns: 1fr 6fr 1fr;
-        min-height: 100vh;
+        grid-template-columns: 1fr 1fr;
+        min-height: 600px;
+      }
+      .page-header, .list{
+        grid-column: 1 / -1;
       }
       
-      .list{
-        grid-column: 2 / 3;
-      }
       .page-header,
       .done-button {
         align-self: end;
-        grid-column: 2 /  3 ;
       }
       .page-title{
         font-size: 20px;
@@ -104,4 +113,4 @@ const Attendance = () => (
   </div>
 );
 
-export default Attendance;
+export default Study;
