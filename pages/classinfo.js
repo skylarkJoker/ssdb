@@ -52,8 +52,12 @@ class ClassInfo extends React.Component {
             <p className="name">Charles King</p>
             <p className="role">Care Coordinator</p>
           </div>
-          <button>ADD MEMBER</button>
-          <button>REPORT</button>
+          <Link href="/add">
+            <button>ADD MEMBER</button>
+          </Link>
+          <button className="report-button" disabled>
+            REPORT
+          </button>
           <Link href="/mark">
             <button>ATTENDANCE</button>
           </Link>
@@ -153,6 +157,10 @@ class ClassInfo extends React.Component {
         color: #fff;
         min-height: 30px;
         font-size: 12px;
+      }
+
+      .report-button{
+        background-color: #ddd;
       }
 
       .list{

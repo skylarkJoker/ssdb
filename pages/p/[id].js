@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const MemberInfo = props => (
   <div className="container">
@@ -31,6 +32,9 @@ const MemberInfo = props => (
           </li>
         </ul>
       </div>
+      <Link href="/classinfo">
+        <button className="done-button">RETURN</button>
+      </Link>
     </div>
     <style jsx>{`
       @import url("https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap");
@@ -44,15 +48,15 @@ const MemberInfo = props => (
 
         display: grid;
         grid-gap: 10px;
-        grid-template-rows: auto auto;
+        grid-template-rows: 1fr 2fr 1fr;
         grid-template-columns: 1fr;
         justify-content: center;
+        min-height: 600px;
       }
 
       .member-header {
         text-align: center;
         grid-row: 1;
-        grid-column: 1 / span 3;
       }
 
       .member-header .member-letter {
@@ -84,8 +88,7 @@ const MemberInfo = props => (
         font-weight: 400;
       }
       .list {
-        grid-row: 4;
-        grid-column: 1 / span 3;
+        grid-row: 2;
       }
 
       .list .list-title {
@@ -117,6 +120,15 @@ const MemberInfo = props => (
       .record .study {
         font-weight: 300;
         font-size: 10px;
+      }
+
+      button {
+        border-radius: 4px;
+        background-color: #40b1a2;
+        border: none;
+        padding: 20px 10px;
+        color: #fff;
+        max-height: 50px;
       }
     `}</style>
   </div>
