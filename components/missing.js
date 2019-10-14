@@ -12,10 +12,16 @@ const Missing = props => (
       <ul className="list">
         {props.members
           .filter(member => {
-            return member.status === "absent";
+            return member.status !== "present";
           })
           .map(member => (
-            <li key={member.id} className="member">
+            <li
+              key={member.id}
+              className={
+                props.active.includes(member.id) ? "selected member" : "member"
+              }
+              onClick={props.toggleMssnAccounted.bind(this, member.id)}
+            >
               <img className="profile" src="/pic.svg" alt="user image"></img>
               <p className="name">{member.name}</p>
               <p className="address">{member.address}</p>
@@ -76,7 +82,7 @@ const Missing = props => (
         background-color: #fff;
         box-shadow: 0px 3px 6px #00000029;
         margin-bottom: 10px;
-        padding: 0 0 5px 40px;
+        padding: 5px 0 5px 40px;
         max-height: 40px;
 
         display: grid;
@@ -103,6 +109,13 @@ const Missing = props => (
         margin auto 0;
         grid-row: 1 / -1;
         grid-column: 1 / 2;
+      }
+
+      .selected{
+        background-color: #F85968;
+      }
+      .selected p{
+        color: #fff;
       }
 
       button {

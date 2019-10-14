@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Home = () => (
   <div>
@@ -7,9 +8,11 @@ const Home = () => (
         <img className="logo item1" src="/ssdb.svg" alt="ssdb logo"></img>
         <input className="item2" placeholder="Username" type="text"></input>
         <input className="item3" placeholder="Password" type="password"></input>
-        <button className="item4" type="submit">
-          Login
-        </button>
+        <Link href="/classinfo">
+          <button className="item4" type="submit">
+            Login
+          </button>
+        </Link>
       </div>
     </form>
     <style jsx>{`

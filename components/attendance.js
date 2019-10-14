@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Attendance = props => (
   <div className="container">
@@ -22,6 +23,9 @@ const Attendance = props => (
           </li>
         ))}
       </ul>
+      <Link href="/classinfo">
+        <button className="done-button">CANCEL</button>
+      </Link>
       <button className="done-button" onClick={props.nextStep}>
         NEXT
       </button>
@@ -37,10 +41,14 @@ const Attendance = props => (
         color: #707070;
 
         display: grid;
-        grid-row-gap: 10px;
+        grid-gap: 10px 50px;
         grid-template-rows: 1fr 3fr 1fr;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         min-height: 600px;
+      }
+
+      .page-header, .list{
+        grid-column: 1 / -1;
       }
       
       .page-header,

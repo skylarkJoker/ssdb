@@ -122,4 +122,32 @@ const MemberInfo = props => (
   </div>
 );
 
+MemberInfo.getInitialProps = async function() {
+  return {
+    members: [
+      {
+        id: "1",
+        name: "Andrew Aardvark",
+        address: "Vernon's Estate",
+        status: "absent",
+        studied: "no_study"
+      },
+      {
+        id: "2",
+        name: "Brandon Marks",
+        address: "Vernon's Estate",
+        status: "absent",
+        studied: "no_study"
+      },
+      {
+        id: "3",
+        name: "Charles King",
+        address: "Vernon's Estate",
+        status: "absent",
+        studied: "no_study"
+      }
+    ]
+  };
+};
+
 export default MemberInfo;

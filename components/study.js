@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Study = props => (
   <div className="container">
@@ -13,7 +14,13 @@ const Study = props => (
             return member.status === "present";
           })
           .map(member => (
-            <li key={member.id} className="member">
+            <li
+              key={member.id}
+              className={
+                props.active.includes(member.id) ? "selected member" : "member"
+              }
+              onClick={props.toggleStudied.bind(this, member.id)}
+            >
               <img className="profile" src="/pic.svg" alt="user image"></img>
               <p className="name">{member.name}</p>
               <p className="address">{member.address}</p>
@@ -23,7 +30,9 @@ const Study = props => (
       <button className="done-button" onClick={props.prevStep}>
         PREV
       </button>
-      <button className="done-button">DONE</button>
+      <Link href="/classinfo">
+        <button className="done-button">DONE</button>
+      </Link>
     </div>
     <style jsx>{`
       @import url('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap');
@@ -72,7 +81,7 @@ const Study = props => (
         background-color: #fff;
         box-shadow: 0px 3px 6px #00000029;
         margin-bottom: 10px;
-        padding: 0 0 5px 40px;
+        padding: 5px 0 5px 40px;
         max-height: 40px;
 
         display: grid;
@@ -100,6 +109,14 @@ const Study = props => (
         grid-row: 1 / -1;
         grid-column: 1 / 2;
       }
+
+      .selected{
+        background-color: #FFB530;
+      }
+      .selected p{
+        color: #fff;
+      }
+
 
       button {
         border-radius: 4px;

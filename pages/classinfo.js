@@ -1,49 +1,82 @@
 import React from "react";
+import Link from "next/link";
 
-const ClassInfo = () => (
-  <div className="container">
-    <div className="grid-container">
-      <div className="class-header">
-        <div className="class-letter">
-          <p>E</p>
-        </div>
-        <p className="class-name">Class Esther</p>
-        <p className="class-info">
-          division I | <span>12</span> members
-        </p>
-      </div>
-      <div className="leader">
-        <p className="name">Andrew Aardvark</p>
-        <p className="role">Teacher</p>
-      </div>
-      <div className="leader">
-        <p className="name">Brandon Marks</p>
-        <p className="role">Secretary</p>
-      </div>
-      <div className="leader">
-        <p className="name">Charles King</p>
-        <p className="role">Care Coordinator</p>
-      </div>
-      <button>ADD MEMBER</button>
-      <button>REPORT</button>
-      <button>ATTENDANCE</button>
-      <div className="list">
-        <p className="list-title">Members</p>
-        <ul>
-          <li className="member">
-            <img className="profile" src="/pic.svg" alt="user image"></img>
+class ClassInfo extends React.Component {
+  state = {
+    members: [
+      {
+        id: "1",
+        name: "Andrew Aardvark",
+        address: "Vernon's Estate",
+        status: "absent",
+        studied: "no_study"
+      },
+      {
+        id: "2",
+        name: "Brandon Marks",
+        address: "Vernon's Estate",
+        status: "absent",
+        studied: "no_study"
+      },
+      {
+        id: "3",
+        name: "Charles King",
+        address: "Vernon's Estate",
+        status: "absent",
+        studied: "no_study"
+      }
+    ]
+  };
+  render() {
+    return (
+      <div className="container">
+        <div className="grid-container">
+          <div className="class-header">
+            <div className="class-letter">
+              <p>E</p>
+            </div>
+            <p className="class-name">Class Esther</p>
+            <p className="class-info">
+              division I | <span>12</span> members
+            </p>
+          </div>
+          <div className="leader">
             <p className="name">Andrew Aardvark</p>
-            <p className="address">Vernon's Estate</p>
-          </li>
-          <li className="member">
-            <img className="profile" src="/pic.svg" alt="user image"></img>
+            <p className="role">Teacher</p>
+          </div>
+          <div className="leader">
             <p className="name">Brandon Marks</p>
-            <p className="address">Vernon's Estate</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <style jsx>{`
+            <p className="role">Secretary</p>
+          </div>
+          <div className="leader">
+            <p className="name">Charles King</p>
+            <p className="role">Care Coordinator</p>
+          </div>
+          <button>ADD MEMBER</button>
+          <button>REPORT</button>
+          <Link href="/mark">
+            <button>ATTENDANCE</button>
+          </Link>
+          <div className="list">
+            <p className="list-title">Members</p>
+            <ul>
+              {this.state.members.map(member => (
+                <Link key={member.id} href="/p/[id]" as="/p/memberinfo">
+                  <li className="member">
+                    <img
+                      className="profile"
+                      src="/pic.svg"
+                      alt="user image"
+                    ></img>
+                    <p className="name">{member.name}</p>
+                    <p className="address">{member.address}</p>
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <style jsx>{`
       @import url("https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap");
       .container{
         padding: 40px 40px 0 40px;
@@ -172,7 +205,9 @@ const ClassInfo = () => (
       }
 
     `}</style>
-  </div>
-);
+      </div>
+    );
+  }
+}
 
 export default ClassInfo;
